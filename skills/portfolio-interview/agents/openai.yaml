@@ -1,0 +1,10 @@
+interface:
+  display_name: Portfolio Interview
+  short_description: Interview, then build an SEO and GEO ready portfolio site
+  brand_color: "#df9367"
+  default_prompt: Interview me and build my personal portfolio website
+policy:
+  products:
+    - CHAT
+    - CODEX
+  allow_implicit_invocation: true

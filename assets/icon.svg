@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="icon-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff7ed" />
+      <stop offset="50%" stop-color="#ffedd5" />
+      <stop offset="100%" stop-color="#fed7aa" />
+    </linearGradient>
+    <filter id="hand-ink-icon" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base Frame -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#icon-bg)" stroke="#1e293b" stroke-width="12" />
+
+  <g filter="url(#hand-ink-icon)">
+    <!-- Comic Sparkle Star -->
+    <path d="M 405,80 L 411,96 L 427,97 L 414,108 L 418,124 L 405,114 L 392,124 L 396,108 L 383,97 L 399,96 Z" fill="#facc15" stroke="#1e293b" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Mini Q&A Chat Bubble -->
+    <path d="M 85,115 Q 65,115 65,140 Q 65,165 95,165 L 95,185 L 120,165 L 145,165 Q 165,165 165,140 Q 165,115 135,115 Z" fill="#ffffff" stroke="#1e293b" stroke-width="6" stroke-linejoin="round" />
+    <text x="115" y="148" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" fill="#ea580c">Q&amp;A</text>
+
+    <!-- The Portfolio Browser Mini Window -->
+    <g transform="rotate(-6 315 295)">
+      <rect x="195" y="185" width="225" height="155" rx="14" fill="#ffffff" stroke="#1e293b" stroke-width="9" stroke-linejoin="round" />
+      <path d="M 195,215 L 420,215" stroke="#1e293b" stroke-width="6" />
+      <circle cx="215" cy="200" r="5" fill="#ef4444" />
+      <circle cx="230" cy="200" r="5" fill="#facc15" />
+      <circle cx="245" cy="200" r="5" fill="#22c55e" />
+
+      <!-- Inside Portfolio Page -->
+      <circle cx="235" cy="250" r="18" fill="#fed7aa" stroke="#1e293b" stroke-width="4" />
+      <path d="M 265,242 L 355,242" stroke="#ea580c" stroke-width="7" stroke-linecap="round" />
+      <path d="M 265,258 L 395,258" stroke="#1e293b" stroke-width="4" stroke-linecap="round" />
+      <path d="M 265,270 L 340,270" stroke="#1e293b" stroke-width="4" stroke-linecap="round" />
+
+      <!-- Project Cards -->
+      <rect x="220" y="286" width="85" height="38" rx="6" fill="#f8fafc" stroke="#1e293b" stroke-width="4" />
+      <path d="M 230,300 L 285,300" stroke="#0284c7" stroke-width="4" stroke-linecap="round" />
+      <rect x="320" y="286" width="85" height="38" rx="6" fill="#f8fafc" stroke="#1e293b" stroke-width="4" />
+      <path d="M 330,300 L 385,300" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+    </g>
+
+    <!-- Character Head & Torso -->
+    <!-- Head -->
+    <circle cx="170" cy="300" r="75" fill="#ffffff" stroke="#1e293b" stroke-width="9" />
+
+    <!-- Beret Hat -->
+    <path d="M 150,225 Q 170,195 205,208 Q 230,220 220,240" fill="#ea580c" stroke="#1e293b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="175" cy="195" r="7" fill="#facc15" stroke="#1e293b" stroke-width="4" />
+
+    <!-- Big Eyes -->
+    <ellipse cx="145" cy="285" rx="18" ry="22" fill="#ffffff" stroke="#1e293b" stroke-width="6" />
+    <ellipse cx="150" cy="285" rx="8" ry="11" fill="#1e293b" />
+    <circle cx="153" cy="280" r="3.5" fill="#ffffff" />
+
+    <ellipse cx="195" cy="286" rx="18" ry="22" fill="#ffffff" stroke="#1e293b" stroke-width="6" />
+    <ellipse cx="199" cy="286" rx="8" ry="11" fill="#1e293b" />
+    <circle cx="202" cy="281" r="3.5" fill="#ffffff" />
+
+    <!-- Eyebrows -->
+    <path d="M 132,260 Q 146,248 165,258" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" />
+    <path d="M 182,260 Q 200,248 220,260" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Cheeks (Blush) -->
+    <ellipse cx="125" cy="310" rx="12" ry="7" fill="#fca5a5" opacity="0.75" />
+    <ellipse cx="215" cy="312" rx="12" ry="7" fill="#fca5a5" opacity="0.75" />
+
+    <!-- Big Smile -->
+    <path d="M 150,325 Q 172,352 195,325" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Hand pointing at website -->
+    <ellipse cx="235" cy="350" rx="14" ry="12" fill="#ffffff" stroke="#1e293b" stroke-width="6" />
+  </g>
+</svg>

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <style>
+      .doodle-line { stroke: #1e293b; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .doodle-thick { stroke: #1e293b; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .doodle-fill { fill: #ffffff; }
+      .star-fill { fill: #facc15; stroke: #1e293b; stroke-width: 3.5; stroke-linejoin: round; }
+    </style>
+    <filter id="hand-drawn-light" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Backdrop Glow -->
+  <path d="M 160,110 Q 320,50 430,130 T 460,300 Q 410,420 260,390 T 110,250 Z" fill="#ffedd5" opacity="0.65" />
+  <circle cx="120" cy="140" r="45" fill="#fef08a" opacity="0.8" />
+  <circle cx="430" cy="330" r="35" fill="#bae6fd" opacity="0.6" />
+
+  <g filter="url(#hand-drawn-light)">
+    <!-- Comic Sparkles & Idea Lightbulbs -->
+    <path d="M 85,130 L 90,143 L 104,144 L 93,153 L 96,167 L 85,158 L 74,167 L 77,153 L 66,144 L 80,143 Z" class="star-fill" />
+    <path d="M 435,100 L 439,111 L 451,112 L 442,119 L 445,130 L 435,123 L 425,130 L 428,119 L 419,112 L 431,111 Z" class="star-fill" />
+    
+    <!-- Interview Speech Bubble with Questions -->
+    <path d="M 80,205 Q 60,205 60,230 Q 60,255 90,255 L 90,275 L 115,255 L 140,255 Q 160,255 160,230 Q 160,205 130,205 Z" fill="#ffffff" stroke="#1e293b" stroke-width="5" stroke-linejoin="round" />
+    <text x="110" y="238" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#ea580c">Q&amp;A?</text>
+
+    <!-- The Portfolio Browser Window Being Built -->
+    <g transform="rotate(-6 310 180)">
+      <!-- Window Frame -->
+      <rect x="200" y="70" width="220" height="150" rx="12" fill="#ffffff" stroke="#1e293b" stroke-width="6.5" stroke-linejoin="round" />
+      <!-- Window Header Bar -->
+      <path d="M 200,98 L 420,98" class="doodle-line" stroke-width="4.5" />
+      <!-- Window Dots -->
+      <circle cx="218" cy="84" r="5" fill="#ef4444" stroke="#1e293b" stroke-width="2.5" />
+      <circle cx="234" cy="84" r="5" fill="#facc15" stroke="#1e293b" stroke-width="2.5" />
+      <circle cx="250" cy="84" r="5" fill="#22c55e" stroke="#1e293b" stroke-width="2.5" />
+
+      <!-- Inside Portfolio Page -->
+      <!-- Avatar Circle -->
+      <circle cx="236" cy="135" r="18" fill="#fed7aa" stroke="#1e293b" stroke-width="3.5" />
+      <!-- Avatar smiley -->
+      <circle cx="231" cy="132" r="2" fill="#1e293b" />
+      <circle cx="241" cy="132" r="2" fill="#1e293b" />
+      <path d="M 231,142 Q 236,147 241,142" class="doodle-line" stroke-width="2" />
+
+      <!-- Profile Name Line & Bio -->
+      <path d="M 265,126 L 360,126" class="doodle-thick" stroke-width="6" stroke="#ea580c" />
+      <path d="M 265,142 L 395,142" class="doodle-line" stroke-width="3" />
+      <path d="M 265,152 L 350,152" class="doodle-line" stroke-width="3" />
+
+      <!-- Project Cards Mini -->
+      <rect x="220" y="168" width="85" height="38" rx="6" fill="#f8fafc" stroke="#1e293b" stroke-width="3.5" />
+      <path d="M 228,182 L 285,182" class="doodle-line" stroke-width="3" stroke="#0284c7" />
+      <path d="M 228,193 L 265,193" class="doodle-line" stroke-width="2.5" />
+
+      <rect x="320" y="168" width="85" height="38" rx="6" fill="#f8fafc" stroke="#1e293b" stroke-width="3.5" />
+      <path d="M 328,182 L 385,182" class="doodle-line" stroke-width="3" stroke="#16a34a" />
+      <path d="M 328,193 L 365,193" class="doodle-line" stroke-width="2.5" />
+    </g>
+
+    <!-- Character Body (The Creator / Interviewee) -->
+    <!-- Legs -->
+    <path d="M 180,360 L 170,425 Q 155,430 145,435" class="doodle-thick" />
+    <path d="M 215,360 L 230,425 Q 248,430 258,435" class="doodle-thick" />
+
+    <!-- Torso -->
+    <path d="M 175,290 C 165,315 160,345 175,360 L 220,360 C 235,340 235,315 225,290 Z" fill="#ffffff" stroke="#1e293b" stroke-width="6" stroke-linejoin="round" />
+    <!-- Tie / Badge -->
+    <path d="M 197,295 L 203,295 L 206,325 L 200,335 L 194,325 Z" fill="#ea580c" stroke="#1e293b" stroke-width="3" />
+
+    <!-- Left Arm holding Microphone / Pointer -->
+    <path d="M 175,305 Q 130,315 120,290" class="doodle-thick" />
+    <!-- Microphone in hand -->
+    <ellipse cx="115" cy="285" rx="8" ry="12" transform="rotate(-20 115 285)" fill="#64748b" stroke="#1e293b" stroke-width="3.5" />
+    <rect x="111" y="293" width="7" height="15" transform="rotate(-20 115 285)" fill="#1e293b" />
+
+    <!-- Right Arm pointing with pride at the website -->
+    <path d="M 225,305 Q 275,300 290,265" class="doodle-thick" />
+    <ellipse cx="295" cy="260" rx="9" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="4.5" />
+
+    <!-- Character Head -->
+    <circle cx="200" cy="235" r="56" fill="#ffffff" stroke="#1e293b" stroke-width="6" />
+
+    <!-- Funny Doodle Hair / Beret -->
+    <path d="M 185,178 Q 200,155 225,165 Q 245,175 235,190" class="doodle-thick" fill="#ea580c" />
+    <circle cx="205" cy="155" r="6" fill="#facc15" stroke="#1e293b" stroke-width="3" />
+
+    <!-- Big Doodle Eyes -->
+    <!-- Left Eye (Wide happy) -->
+    <ellipse cx="182" cy="225" rx="14" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="4.5" />
+    <ellipse cx="186" cy="225" rx="6.5" ry="8" fill="#1e293b" />
+    <circle cx="188" cy="222" r="2.5" fill="#ffffff" />
+
+    <!-- Right Eye (Proud wink) -->
+    <ellipse cx="218" cy="226" rx="14" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="4.5" />
+    <ellipse cx="221" cy="226" rx="6.5" ry="8" fill="#1e293b" />
+    <circle cx="223" cy="223" r="2.5" fill="#ffffff" />
+
+    <!-- Happy Eyebrows -->
+    <path d="M 172,208 Q 182,198 196,206" class="doodle-thick" stroke-width="4.5" />
+    <path d="M 210,208 Q 224,198 238,206" class="doodle-thick" stroke-width="4.5" />
+
+    <!-- Cheeks (Blush) -->
+    <ellipse cx="168" cy="242" rx="8" ry="5" fill="#fca5a5" opacity="0.7" />
+    <ellipse cx="232" cy="244" rx="8" ry="5" fill="#fca5a5" opacity="0.7" />
+
+    <!-- Big Happy Grin -->
+    <path d="M 185,250 Q 202,268 220,250" class="doodle-thick" stroke-width="5" />
+  </g>
+
+  <!-- Wordmark Section -->
+  <g transform="translate(256, 460)">
+    <text x="0" y="0" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#1e293b" letter-spacing="1">
+      PORTFOLIO <tspan fill="#ea580c">INTERVIEW</tspan>
+    </text>
+    <path d="M -130,9 Q 0,16 130,9" class="doodle-line" stroke="#ea580c" stroke-width="3.5" />
+    <text x="0" y="27" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="11" fill="#64748b" letter-spacing="1.5">
+      AI INTERVIEW • MULTILINGUAL • STATIC PORTFOLIO BUILDER
+    </text>
+  </g>
+</svg>
