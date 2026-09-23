@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "locales": ["en", "ar"],
+  "site": {
+    "url": "https://sara-example.github.io/",
+    "updated": "2026-09-23",
+    "style": "bold",
+    "brand": "lilac"
+  },
+  "field": {
+    "archetype": "designer",
+    "specialty": { "en": "Product design for Arabic-first apps", "ar": "تصميم منتجات لتطبيقات عربية أولًا" },
+    "seniority": "senior"
+  },
+  "person": {
+    "name": { "en": "Sara Adel", "ar": "سارة عادل" },
+    "givenName": "Sara",
+    "familyName": "Adel",
+    "alternateNames": ["saraadel.design"],
+    "jobTitle": { "en": "Senior Product Designer", "ar": "Senior Product Designer" },
+    "roleLine": { "en": "Product design · RTL interfaces · Design systems", "ar": "تصميم منتجات · واجهات RTL · Design Systems" },
+    "eyebrow": { "en": "Product designer, Cairo", "ar": "مصممة منتجات من القاهرة" },
+    "headline": {
+      "lead": { "en": "I design apps that read", "ar": "بصمم تطبيقات" },
+      "highlight": { "en": "right to left", "ar": "بتتقري من اليمين" },
+      "tail": { "en": "without feeling translated", "ar": "ومفيهاش إحساس الترجمة" }
+    },
+    "summary": {
+      "en": "Seven years designing fintech and delivery apps for Egypt and the Gulf. I start from the Arabic layout, test it with real users in Cairo and Riyadh, then hand engineers a design system they can ship from.",
+      "ar": "سبع سنين بصمم تطبيقات Fintech وتوصيل لمصر والخليج. ببدأ من التصميم العربي، وبختبره مع مستخدمين حقيقيين في القاهرة والرياض، وبعدها بسلم للمهندسين Design System يقدروا يبنوا منه على طول."
+    },
+    "metaDescription": {
+      "en": "Sara Adel is a senior product designer in Cairo who designs Arabic-first fintech and delivery apps, runs usability tests and builds RTL design systems.",
+      "ar": "سارة عادل مصممة منتجات في القاهرة، بتصمم تطبيقات Fintech وتوصيل عربية أولًا، وبتعمل اختبارات استخدام وبتبني Design Systems للـ RTL."
+    },
+    "location": { "city": { "en": "Cairo", "ar": "القاهرة" }, "country": { "en": "Egypt", "ar": "مصر" }, "countryCode": "EG" },
+    "languages": ["ar", "en"],
+    "audience": { "en": "Fintech and delivery startups in MENA", "ar": "شركات Fintech وتوصيل ناشئة في المنطقة" },
+    "availability": {
+      "open": true,
+      "types": ["freelance", "full-time"],
+      "markets": { "en": ["Egypt", "Saudi Arabia", "UAE", "Remote"], "ar": ["مصر", "السعودية", "الإمارات", "عن بعد"] }
+    },
+    "stickers": { "en": ["RTL first", "tested", "shipped"], "ar": ["RTL أولًا", "متجرب", "اتسلم"] },
+    "avatar": "img/avatar.svg",
+    "email": "sara@example.com",
+    "showEmail": true,
+    "whatsapp": "+20 100 000 0000",
+    "knowsAbout": ["Product design", "RTL interface design", "Design systems", "Usability testing", "Figma", "Fintech UX"]
+  },
+  "socials": [
+    { "platform": "linkedin", "handle": "sara-adel-example" },
+    { "platform": "behance", "handle": "saraadel" },
+    { "platform": "dribbble", "handle": "saraadel" },
+    { "platform": "instagram", "handle": "saraadel.design" }
+  ],
+  "stats": [
+    { "value": "7", "label": { "en": "Years in product design", "ar": "سنين في تصميم المنتجات" }, "source": { "en": "Career record", "ar": "السجل المهني" } },
+    { "value": "12", "label": { "en": "Apps shipped", "ar": "تطبيق اتسلم" }, "source": { "en": "Career record", "ar": "السجل المهني" } }
+  ],
+  "skills": {
+    "marquee": { "en": ["Product design", "RTL layouts", "Design systems", "Usability tests", "Prototyping", "UX writing"], "ar": ["تصميم منتجات", "تصميم RTL", "Design Systems", "اختبارات استخدام", "Prototyping", "UX Writing"] },
+    "groups": [
+      { "title": { "en": "Daily tools", "ar": "أدوات يومية" }, "items": ["Figma", "FigJam", "Maze", "Notion", "Linear"] },
+      { "title": { "en": "Methods", "ar": "طرق الشغل" }, "items": ["Usability testing", "Journey mapping", "Design tokens"] },
+      { "title": { "en": "Platforms", "ar": "المنصات" }, "items": ["iOS", "Android", "Web"] }
+    ]
+  },
+  "services": [
+    { "icon": "palette", "title": { "en": "Product design", "ar": "تصميم المنتج" }, "body": { "en": "Flows, screens and prototypes for new features, designed in Arabic first.", "ar": "Flows وشاشات وPrototypes لفيتشرز جديدة، متصممة بالعربي الأول." } },
+    { "icon": "layers", "title": { "en": "Design systems", "ar": "Design Systems" }, "body": { "en": "Tokens and components that mirror cleanly between LTR and RTL.", "ar": "Tokens وComponents بتتعكس صح بين الـ LTR والـ RTL." } },
+    { "icon": "users", "title": { "en": "Usability testing", "ar": "اختبارات الاستخدام" }, "body": { "en": "Moderated sessions with real users in Cairo and Riyadh, with a written findings report.", "ar": "جلسات مع مستخدمين حقيقيين في القاهرة والرياض، ومعاها تقرير مكتوب بالنتائج." } }
+  ],
+  "work": [
+    { "name": { "en": "Wallet onboarding", "ar": "تسجيل المحفظة" }, "url": "https://www.behance.net/saraadel", "image": "img/work-1.svg", "year": 2025, "role": { "en": "Lead designer", "ar": "Lead Designer" }, "description": { "en": "Rebuilt the sign-up flow for an Egyptian wallet app around national ID scanning.", "ar": "إعادة بناء التسجيل لتطبيق محفظة مصري حوالين مسح البطاقة الشخصية." }, "outcome": { "en": "Sign-up completion went from 41% to 63% in the first month, per the client's analytics.", "ar": "نسبة إكمال التسجيل طلعت من 41% لـ 63% في أول شهر، حسب تحليلات العميل." }, "tags": ["fintech", "onboarding", "RTL"] },
+    { "name": { "en": "Grocery checkout", "ar": "Checkout البقالة" }, "image": "img/work-2.svg", "year": 2024, "role": { "en": "Product designer", "ar": "Product Designer" }, "description": { "en": "Cut a five-step checkout to two for a Riyadh grocery delivery app.", "ar": "اختصار Checkout من خمس خطوات لخطوتين لتطبيق توصيل بقالة في الرياض." }, "tags": ["delivery", "checkout"] },
+    { "name": { "en": "Nour design system", "ar": "Design System نور" }, "url": "https://dribbble.com/saraadel", "image": "img/work-3.svg", "year": 2023, "role": { "en": "Design system owner", "ar": "مسؤولة الـ Design System" }, "description": { "en": "A bilingual component library with 140 components and mirrored tokens.", "ar": "مكتبة Components ثنائية اللغة فيها 140 Component وTokens بتتعكس." }, "tags": ["design system", "tokens"] }
+  ],
+  "experience": [
+    { "role": { "en": "Senior Product Designer", "ar": "Senior Product Designer" }, "org": "Example Pay", "start": "2023", "end": "present", "summary": { "en": "Own onboarding and payments design for 2 million users.", "ar": "مسؤولة عن تصميم التسجيل والمدفوعات لـ 2 مليون مستخدم." } },
+    { "role": { "en": "Product Designer", "ar": "Product Designer" }, "org": "Example Delivery", "start": "2020", "end": "2023", "summary": { "en": "Designed the consumer app and the courier app.", "ar": "صممت تطبيق العملاء وتطبيق المندوبين." } }
+  ],
+  "process": [
+    { "title": { "en": "Listen", "ar": "اسمع" }, "body": { "en": "Read the data and sit with support before drawing anything.", "ar": "اقرا الداتا واقعد مع خدمة العملاء قبل ما ترسم أي حاجة." } },
+    { "title": { "en": "Sketch in Arabic", "ar": "ارسم بالعربي" }, "body": { "en": "The first version is RTL. English is the mirror.", "ar": "أول نسخة بتبقى RTL، والإنجليزي هو العكس." } },
+    { "title": { "en": "Test", "ar": "اختبر" }, "body": { "en": "Five users per round, recorded, with notes shared the same day.", "ar": "خمس مستخدمين في كل جولة، متسجلين، والملاحظات بتتبعت في نفس اليوم." } },
+    { "title": { "en": "Hand off", "ar": "سلّم" }, "body": { "en": "Specs, tokens and a walkthrough call with engineering.", "ar": "Specs وTokens ومكالمة شرح مع فريق الهندسة." } }
+  ],
+  "testimonials": [
+    { "quote": { "en": "Sara's Arabic-first flows cut our support tickets about sign-up in half.", "ar": "الـ Flows اللي سارة عملتها بالعربي الأول قللت تذاكر الدعم عن التسجيل للنص." }, "name": "Example Name", "role": { "en": "Head of Product, Example Pay", "ar": "Head of Product في Example Pay" } }
+  ],
+  "about": {
+    "body": {
+      "en": ["I studied architecture at Cairo University, then moved into digital product design in 2019.", "Most of my work sits where Arabic readers meet financial decisions: sign-up, payments and trust."],
+      "ar": ["درست عمارة في جامعة القاهرة، وبعدين دخلت تصميم المنتجات الرقمية سنة 2019.", "أغلب شغلي في المنطقة اللي القارئ العربي بياخد فيها قرار مالي: التسجيل والدفع والثقة."]
+    }
+  },
+  "featured": { "url": "https://www.behance.net/saraadel", "label": { "en": "Full case studies", "ar": "دراسات الحالة كاملة" }, "title": { "en": "Behance", "ar": "Behance" } }
+}

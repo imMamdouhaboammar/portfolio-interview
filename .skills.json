@@ -1,0 +1,17 @@
+{
+  "$schema": "https://skills.sh/schema.json",
+  "name": "portfolio-interview",
+  "version": "1.3.0",
+  "description": "Interactive AI agent skill to build responsive, bilingual portfolio websites ready for search and AI answer engines",
+  "author": "Mamdouh Aboammar",
+  "homepage": "https://github.com/imMamdouhaboammar/portfolio-interview",
+  "skill": {
+    "entry": "SKILL.md",
+    "agents": [
+      "agents/profile-miner.md",
+      "agents/portfolio-copywriter.md",
+      "agents/portfolio-qa.md"
+    ],
+    "hooks": "hooks/hooks.json"
+  }
+}

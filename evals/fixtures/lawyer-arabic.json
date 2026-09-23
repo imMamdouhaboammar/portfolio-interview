@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "locales": [
+    "ar"
+  ],
+  "site": {
+    "url": "https://omar-law.example.com",
+    "updated": "2026-09-23",
+    "brand": "navy",
+    "dialect": "msa"
+  },
+  "field": {
+    "archetype": "professional",
+    "specialty": "قانون الشركات والعقود التجارية"
+  },
+  "person": {
+    "name": "عمر خالد",
+    "alternateNames": [
+      "Omar Khaled"
+    ],
+    "jobTitle": "محامي شركات",
+    "headline": {
+      "lead": "أصوغ عقودًا",
+      "highlight": "تحمي شركتك",
+      "tail": "قبل أن تصل إلى المحكمة"
+    },
+    "summary": "محامٍ مرخّص من وزارة العدل، أعمل مع الشركات الناشئة والمتوسطة في الرياض على التأسيس والعقود التجارية واتفاقيات الشركاء.",
+    "location": {
+      "city": "الرياض",
+      "country": "السعودية",
+      "countryCode": "SA"
+    },
+    "languages": [
+      "ar",
+      "en"
+    ],
+    "availability": {
+      "open": true,
+      "types": [
+        "consulting"
+      ],
+      "markets": [
+        "السعودية",
+        "الخليج"
+      ]
+    },
+    "email": "omar@example.com",
+    "knowsAbout": [
+      "Corporate law",
+      "Commercial contracts",
+      "Shareholder agreements"
+    ]
+  },
+  "socials": [
+    {
+      "platform": "linkedin",
+      "handle": "omar-khaled-example"
+    },
+    {
+      "platform": "x",
+      "handle": "omarlaw"
+    }
+  ],
+  "services": [
+    {
+      "icon": "briefcase",
+      "title": "تأسيس الشركات",
+      "body": "من اختيار الكيان القانوني حتى السجل التجاري وعقد التأسيس."
+    },
+    {
+      "icon": "docs",
+      "title": "العقود التجارية",
+      "body": "صياغة ومراجعة عقود التوريد والتوزيع والخدمات."
+    },
+    {
+      "icon": "scale",
+      "title": "اتفاقيات الشركاء",
+      "body": "توزيع الحصص والصلاحيات وطريقة الخروج من الشراكة."
+    }
+  ],
+  "experience": [
+    {
+      "role": "محامي شركات",
+      "org": "مكتب مثال للمحاماة",
+      "start": "2019",
+      "end": "present",
+      "summary": "أتولى ملف الشركات الناشئة في المكتب."
+    }
+  ],
+  "about": {
+    "body": [
+      "بكالوريوس الأنظمة من جامعة الملك سعود، ورخصة محاماة من وزارة العدل."
+    ]
+  }
+}

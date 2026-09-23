@@ -1,0 +1,36 @@
+{
+  "name": "portfolio-interview",
+  "version": "1.3.0",
+  "description": "Interactive AI agent skill to build responsive, bilingual portfolio websites ready for search and AI answer engines",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imMamdouhaboammar/portfolio-interview.git"
+  },
+  "scripts": {
+    "test": "bun scripts/selftest.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "keywords": [
+    "portfolio",
+    "portfolio-interview",
+    "agent-skill",
+    "claude-code",
+    "claude-plugin",
+    "skills.sh",
+    "antigravity",
+    "gemini-cli",
+    "cursor",
+    "codex",
+    "bilingual",
+    "arabic",
+    "static-site-generator"
+  ],
+  "author": "Mamdouh Aboammar <https://github.com/imMamdouhaboammar>",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=18.0.0"
+  }
+}

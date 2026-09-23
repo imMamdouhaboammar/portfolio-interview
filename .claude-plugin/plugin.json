@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-interview",
+  "displayName": "Portfolio Interview",
+  "version": "1.3.0",
+  "description": "Interviews you in short rounds, with popups when available, then builds a responsive, bilingual personal portfolio site ready for search engines and AI answer engines. Ships a profile miner, a copywriter and a QA subagent, plus hooks that lint profile.json on save and keep generated pages read-only.",
+  "author": {
+    "name": "Mamdouh Aboammar",
+    "url": "https://github.com/imMamdouhaboammar"
+  },
+  "homepage": "https://github.com/imMamdouhaboammar/imMamdouhaboammar/tree/main/.claude/skills/portfolio-interview",
+  "repository": "https://github.com/imMamdouhaboammar/imMamdouhaboammar",
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "seo",
+    "geo",
+    "json-ld",
+    "arabic",
+    "rtl",
+    "static-site"
+  ],
+  "skills": [
+    "./"
+  ]
+}

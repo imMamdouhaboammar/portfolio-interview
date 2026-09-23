@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "locales": ["en", "ar"],
+  "site": { "url": "http://bad.example.com" },
+  "field": { "archetype": "marketer" },
+  "person": {
+    "name": { "en": "Test Person", "ar": "شخص تجريبي" },
+    "jobTitle": { "en": "Growth Marketer" },
+    "summary": { "en": "Not just a marketer — a growth partner who will unlock your brand.", "ar": "ده مش تسويق. ده نمو حقيقي." }
+  },
+  "stats": [ { "value": "300%", "label": { "en": "ROAS uplift" } } ],
+  "testimonials": [ { "quote": { "en": "Great work." } } ]
+}
