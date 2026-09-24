@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "1.4.0",
+  "explanation": "Neural Connections are explicit typed directed handoffs, not a trained neural network. The deterministic router activates only relevant skills.",
+  "nodes": [
+    {
+      "id": "portfolio-source",
+      "produces": [
+        "sourceLedger"
+      ],
+      "requires": []
+    },
+    {
+      "id": "portfolio-interview",
+      "produces": [
+        "approvedFacts",
+        "approvedProfile"
+      ],
+      "requires": []
+    },
+    {
+      "id": "portfolio-story",
+      "produces": [
+        "approvedCopy"
+      ],
+      "requires": [
+        {
+          "flag": "factsApproved",
+          "via": "portfolio-interview"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-design",
+      "produces": [
+        "approvedLayout"
+      ],
+      "requires": [
+        {
+          "flag": "copyApproved",
+          "via": "portfolio-story"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-build",
+      "produces": [
+        "generatedSite"
+      ],
+      "requires": [
+        {
+          "flag": "factsApproved",
+          "via": "portfolio-interview"
+        },
+        {
+          "flag": "copyApproved",
+          "via": "portfolio-story"
+        },
+        {
+          "flag": "layoutApproved",
+          "via": "portfolio-design"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-audit",
+      "produces": [
+        "qaReport"
+      ],
+      "requires": [
+        {
+          "flag": "buildExists",
+          "via": "portfolio-build"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-publish",
+      "produces": [
+        "liveUrl"
+      ],
+      "requires": [
+        {
+          "flag": "qaPassed",
+          "via": "portfolio-audit"
+        },
+        {
+          "flag": "publishApproved",
+          "type": "approval"
+        },
+        {
+          "flag": "contactApproved",
+          "type": "approval",
+          "when": "contactsExposed"
+        }
+      ]
+    },
+    {
+      "id": "host-workspace-operator",
+      "produces": [
+        "hostFileOperations"
+      ],
+      "requires": [],
+      "optional": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "portfolio-source",
+      "to": "portfolio-interview",
+      "when": "missing_fields",
+      "handoff": "source ledger and prioritized questions"
+    },
+    {
+      "from": "portfolio-source",
+      "to": "portfolio-story",
+      "when": "facts_approved",
+      "handoff": "confirmed publication-safe evidence"
+    },
+    {
+      "from": "portfolio-interview",
+      "to": "portfolio-story",
+      "when": "facts_approved",
+      "handoff": "approved profile facts and audience"
+    },
+    {
+      "from": "portfolio-story",
+      "to": "portfolio-design",
+      "when": "copy_approved",
+      "handoff": "copy patch and messaging decisions"
+    },
+    {
+      "from": "portfolio-design",
+      "to": "portfolio-build",
+      "when": "layout_approved",
+      "handoff": "profile layout decision record"
+    },
+    {
+      "from": "portfolio-build",
+      "to": "portfolio-audit",
+      "when": "site_built",
+      "handoff": "generated site path and command results"
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-publish",
+      "when": "qa_passed_and_publication_approved",
+      "handoff": "verified QA report and release approvals"
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-source",
+      "when": "unsupported_claim",
+      "handoff": "failing claim IDs"
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-story",
+      "when": "copy_failure",
+      "handoff": "field-level copy findings"
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-design",
+      "when": "layout_failure",
+      "handoff": "responsive and RTL findings"
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-build",
+      "when": "rendering_failure",
+      "handoff": "reproduction and changed paths"
+    },
+    {
+      "from": "portfolio-publish",
+      "to": "portfolio-build",
+      "when": "site_url_changed",
+      "handoff": "approved production URL"
+    }
+  ],
+  "signals": [
+    {
+      "intent": "publish",
+      "pattern": "publish|deploy|go live|github pages|netlify|vercel|انشر|نشر|ارفع.*موقع"
+    },
+    {
+      "intent": "audit",
+      "pattern": "audit|review.*site|check.*site|qa|accessibility|rtl.*bug|افحص|راجع.*موقع|اختبر.*موقع"
+    },
+    {
+      "intent": "source",
+      "pattern": "extract|analy[sz]e.*cv|read.*resume|linkedin export|github profile|حلل.*سير|اقرأ.*سي[رف]"
+    },
+    {
+      "intent": "story",
+      "pattern": "rewrite|copywriting|headline|case study|about me|translate|locali[sz]e|اكتب.*نبذة|اكتب.*محتوى|ترجم|عدل.*نص"
+    },
+    {
+      "intent": "design",
+      "pattern": "redesign|ui|ux|layout|style|typography|ألوان|تصميم|رتب.*أقسام"
+    },
+    {
+      "intent": "build",
+      "pattern": "rebuild|generate.*site|build.*site|html|css|ابني.*موقع|حدث.*موقع"
+    },
+    {
+      "intent": "interview",
+      "pattern": "interview|ask me|اسألني|مقابلة"
+    },
+    {
+      "intent": "create",
+      "pattern": "portfolio|personal website|cv site|بورتفوليو|موقع شخصي|معرض أعمال"
+    }
+  ]
+}
