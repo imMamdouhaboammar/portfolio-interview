@@ -18,3 +18,5 @@ jobs:
         run: bun scripts/selftest.mjs
       - name: Validate full skill packs
         run: node scripts/skills-selftest.mjs
+      - name: Validate Claude marketplace
+        run: node scripts/marketplace-selftest.mjs
