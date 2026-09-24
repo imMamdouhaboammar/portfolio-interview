@@ -1,0 +1,17 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-audit",
+  "auditMode": "static-only",
+  "artifacts": [],
+  "checks": [],
+  "summary": {
+    "pass": 0,
+    "fail": 0,
+    "not-run": 0
+  },
+  "repairRoutes": [],
+  "statePatch": {
+    "qaPassed": false,
+    "qaIssues": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-publish",
+  "artifact": "",
+  "destination": {
+    "host": "",
+    "target": "",
+    "url": ""
+  },
+  "approvals": {
+    "qaPassed": false,
+    "publishApproved": false,
+    "contactApproved": false,
+    "contactsExposed": false
+  },
+  "deployment": {
+    "status": "not-run",
+    "action": "",
+    "evidence": ""
+  },
+  "liveUrl": null,
+  "postDeployChecks": [],
+  "rollbackPlan": "",
+  "blockers": [],
+  "statePatch": {}
+}

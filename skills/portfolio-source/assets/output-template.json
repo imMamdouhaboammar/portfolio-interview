@@ -1,0 +1,23 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-source",
+  "entries": [
+    {
+      "claim_id": "claim-001",
+      "claim": "REPLACE_WITH_ATOMIC_CLAIM",
+      "source": "REPLACE_WITH_READ_SOURCE_PATH_OR_URL",
+      "location": "REPLACE_WITH_PRECISE_LOCATION",
+      "observed_at": "YYYY-MM-DD",
+      "confidence": "unconfirmed",
+      "publication_permission": "unknown",
+      "notes": ""
+    }
+  ],
+  "unreadable_sources": [],
+  "conflicts": [],
+  "evidence_gaps": [],
+  "statePatch": {
+    "sourcesAvailable": false,
+    "sourcesReviewed": false
+  }
+}

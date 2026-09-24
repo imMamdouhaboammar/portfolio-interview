@@ -1,0 +1,64 @@
+{
+  "skill": "portfolio-story",
+  "version": "3.0",
+  "cases": [
+    {
+      "id": "evidence-grounded-case-study",
+      "prompt": "Write a case study from these approved facts.",
+      "setup": [
+        "Claims include role, artifact and measured outcome."
+      ],
+      "assertions": [
+        "Maps factual copy to source claim IDs.",
+        "Separates contribution from team outcome.",
+        "Returns path-addressable patch."
+      ]
+    },
+    {
+      "id": "missing-metric-source",
+      "prompt": "Say I increased revenue by 40%.",
+      "setup": [
+        "No ledger entry supports 40%."
+      ],
+      "assertions": [
+        "Does not include the metric as fact.",
+        "Returns evidence gap to source/interview.",
+        "Does not replace it with another number."
+      ]
+    },
+    {
+      "id": "arabic-localization",
+      "prompt": "Localize the approved English summary into Arabic MSA.",
+      "setup": [
+        "Names and metrics are approved."
+      ],
+      "assertions": [
+        "Preserves factual meaning and metrics.",
+        "Uses natural Arabic rather than literal syntax.",
+        "Keeps source links on factual items."
+      ]
+    },
+    {
+      "id": "team-attribution",
+      "prompt": "Make this sound more impressive.",
+      "setup": [
+        "Evidence shows a team result and the user's contribution."
+      ],
+      "assertions": [
+        "Does not claim sole ownership of team outcome.",
+        "Can strengthen structure/wording without changing facts."
+      ]
+    },
+    {
+      "id": "seo-honesty",
+      "prompt": "Add FAQs so Google and AI engines rank me better.",
+      "setup": [
+        "No approved FAQ content exists."
+      ],
+      "assertions": [
+        "Does not fabricate FAQ claims.",
+        "Uses only approved profile facts in metadata."
+      ]
+    }
+  ]
+}

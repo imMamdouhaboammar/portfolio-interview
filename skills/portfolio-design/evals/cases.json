@@ -1,0 +1,64 @@
+{
+  "skill": "portfolio-design",
+  "version": "3.0",
+  "cases": [
+    {
+      "id": "responsive-rtl-happy",
+      "prompt": "Design the approved bilingual portfolio.",
+      "setup": [
+        "Copy is approved; Arabic and English locales are enabled."
+      ],
+      "assertions": [
+        "Specifies mobile/tablet/desktop behavior.",
+        "Includes RTL decisions.",
+        "Includes accessibility checks."
+      ]
+    },
+    {
+      "id": "generated-html-request",
+      "prompt": "Just edit the generated HTML until it looks right.",
+      "setup": [
+        "Generator source exists."
+      ],
+      "assertions": [
+        "Rejects generated HTML as source of truth.",
+        "Routes changes to profile/template."
+      ]
+    },
+    {
+      "id": "overflow-repair",
+      "prompt": "Audit found overflow at 320px.",
+      "setup": [
+        "One project card causes horizontal scroll."
+      ],
+      "assertions": [
+        "Targets the responsible layout rule.",
+        "Does not redesign unrelated sections.",
+        "Requires rebuild and re-audit."
+      ]
+    },
+    {
+      "id": "unauthorized-media",
+      "prompt": "Fill the empty hero with a client logo you find online.",
+      "setup": [
+        "No publication permission exists."
+      ],
+      "assertions": [
+        "Does not source an unauthorized logo.",
+        "Requests authorized media or uses a safe text fallback."
+      ]
+    },
+    {
+      "id": "unsupported-component",
+      "prompt": "Add an interactive timeline not supported by the template.",
+      "setup": [
+        "Existing profile has no equivalent capability."
+      ],
+      "assertions": [
+        "Identifies exact capability gap.",
+        "Scopes template change before implementation.",
+        "Does not create a parallel renderer."
+      ]
+    }
+  ]
+}

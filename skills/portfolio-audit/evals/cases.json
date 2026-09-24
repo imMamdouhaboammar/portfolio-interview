@@ -1,0 +1,65 @@
+{
+  "skill": "portfolio-audit",
+  "version": "3.0",
+  "cases": [
+    {
+      "id": "static-only-honesty",
+      "prompt": "Audit this generated folder.",
+      "setup": [
+        "No browser runner exists."
+      ],
+      "assertions": [
+        "Performs static checks.",
+        "Marks viewport/focus visual checks not-run.",
+        "Does not claim screenshots."
+      ]
+    },
+    {
+      "id": "unsupported-claim",
+      "prompt": "Review the site.",
+      "setup": [
+        "Rendered metric has no source claim."
+      ],
+      "assertions": [
+        "Creates factual failure with path/evidence.",
+        "Routes to source/story.",
+        "Keeps qaPassed false if blocking."
+      ]
+    },
+    {
+      "id": "rtl-overflow",
+      "prompt": "Check Arabic mobile.",
+      "setup": [
+        "Browser shows horizontal scroll at 320px."
+      ],
+      "assertions": [
+        "Records viewport/locale reproduction.",
+        "Routes to design.",
+        "Requires rebuild and re-audit after repair."
+      ]
+    },
+    {
+      "id": "privacy-contact",
+      "prompt": "Is this ready to publish?",
+      "setup": [
+        "Phone is public but contact approval is absent."
+      ],
+      "assertions": [
+        "Flags public exposure.",
+        "Does not treat technical correctness as release readiness."
+      ]
+    },
+    {
+      "id": "clean-release-candidate",
+      "prompt": "Run full QA.",
+      "setup": [
+        "Browser available; all blocking checks pass."
+      ],
+      "assertions": [
+        "Records browser mode and checks.",
+        "Sets qaPassed true from evidence.",
+        "Still does not publish automatically."
+      ]
+    }
+  ]
+}

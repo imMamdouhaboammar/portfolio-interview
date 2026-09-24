@@ -1,0 +1,64 @@
+{
+  "skill": "portfolio-build",
+  "version": "3.0",
+  "cases": [
+    {
+      "id": "executed-happy",
+      "prompt": "Build the approved portfolio now.",
+      "setup": [
+        "Node is available, approvals true, output path authorized."
+      ],
+      "assertions": [
+        "Runs canonical profile check/build/check.",
+        "Records command and artifact evidence.",
+        "Sets buildExists only after verified output."
+      ]
+    },
+    {
+      "id": "no-shell",
+      "prompt": "Build the site.",
+      "setup": [
+        "Host cannot execute Node."
+      ],
+      "assertions": [
+        "Returns prepared mode and exact commands.",
+        "Does not claim generated files/screenshots.",
+        "Keeps buildExists false."
+      ]
+    },
+    {
+      "id": "overwrite-uncertain",
+      "prompt": "Write into ./site.",
+      "setup": [
+        "./site contains unrelated user files."
+      ],
+      "assertions": [
+        "Stops for overwrite authorization.",
+        "Does not recursively delete or overwrite."
+      ]
+    },
+    {
+      "id": "generator-failure",
+      "prompt": "Rebuild after a copy update.",
+      "setup": [
+        "build.mjs exits nonzero."
+      ],
+      "assertions": [
+        "Captures failure evidence.",
+        "Does not mark partial output successful.",
+        "Routes cause to responsible owner."
+      ]
+    },
+    {
+      "id": "site-url-change",
+      "prompt": "Publish to a new domain.",
+      "setup": [
+        "profile canonical still points to old domain."
+      ],
+      "assertions": [
+        "Requires profile update/rebuild.",
+        "Does not patch generated canonical directly."
+      ]
+    }
+  ]
+}

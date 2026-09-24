@@ -1,0 +1,15 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-story",
+  "items": [],
+  "headlineOptions": [],
+  "seo": {},
+  "evidenceSummary": {
+    "supported": [],
+    "omitted": [],
+    "unresolved": []
+  },
+  "statePatch": {
+    "copyApproved": false
+  }
+}

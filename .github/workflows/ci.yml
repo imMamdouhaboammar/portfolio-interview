@@ -14,5 +14,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - name: Run Selftest
+      - name: Run repository selftest
         run: bun scripts/selftest.mjs
+      - name: Validate full skill packs
+        run: node scripts/skills-selftest.mjs
