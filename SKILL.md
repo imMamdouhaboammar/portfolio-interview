@@ -7,6 +7,12 @@ metadata:
 
 # Portfolio Interview
 
+## Multi-skill architecture
+
+This root Skill is the compatibility entrypoint. For a full repository or multi-skill install, route ambiguous and multi-step work through `skills/portfolio-router/SKILL.md`. The router dynamically delegates to `portfolio-source`, `portfolio-interview`, `portfolio-story`, `portfolio-design`, `portfolio-build`, `portfolio-audit`, and `portfolio-publish` from the current task, state, QA findings and approval gates. Do not run the full chain for a narrow request, and always return to the router after a specialist produces a state patch.
+
+For hosts that load only this root Skill, keep the legacy all-in-one workflow below as the fallback.
+
 Run a short interview in popups, collect a photo and social accounts, write the copy, then build a static portfolio site with `scripts/build.mjs` and prove it with `scripts/check.mjs`. The site follows the structure of `portfolio/` in the imMamdouhaboammar repository: one generator, plain HTML/CSS/JS, every section in the served HTML, and structured data for search and answer engines.
 
 The person is the source of truth. Draft copy freely, but every fact, number, employer, client and quote on the page must come from them. When a detail is missing, leave the section out.

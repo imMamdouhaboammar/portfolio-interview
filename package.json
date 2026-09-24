@@ -10,7 +10,8 @@
   "scripts": {
     "test": "bun scripts/selftest.mjs",
     "build": "node scripts/build.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "test:router": "node scripts/router-selftest.mjs"
   },
   "keywords": [
     "portfolio",
