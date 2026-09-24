@@ -97,8 +97,20 @@ try {
   expect(lintJunk.status === 0, 'hooks exit 0 on a malformed payload');
 
   // Agents: every file has the frontmatter Claude Code needs.
-  const agents = readdirSync(join(root, 'agents')).filter((f) => f.endsWith('.md'));
-  expect(agents.length === 3, `three subagents ship (${agents.join(', ')})`);
+  const agents = readdirSync(join(root, 'agents')).filter((f) => f.endsWith('.md')).sort();
+  const requiredAgents = [
+    'portfolio-audit-worker.md',
+    'portfolio-build-worker.md',
+    'portfolio-copywriter.md',
+    'portfolio-design-worker.md',
+    'portfolio-orchestrator.md',
+    'portfolio-publish-worker.md',
+    'portfolio-qa.md',
+    'portfolio-source-worker.md',
+    'portfolio-story-worker.md',
+    'profile-miner.md'
+  ];
+  expect(requiredAgents.every((f) => agents.includes(f)), `all compatibility + graph subagents ship (${agents.join(', ')})`);
   for (const f of agents) {
     const head = readFileSync(join(root, 'agents', f), 'utf8').split('---')[1] || '';
     expect(/^name: [a-z0-9-]+$/m.test(head) && /^description: .{40,}/m.test(head), `agent ${f} has name and description`);
