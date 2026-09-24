@@ -46,7 +46,8 @@ function nextCreateStage(state={}) {
 function resolvePrerequisites(target,state,path=[],seen=new Set()) {
   if (!target) return {path,blocked:null};
   if (seen.has(target)) throw new Error('Cycle in prerequisite graph at '+target);
-  seen.add(target);
+  const lineage = new Set(seen);
+  lineage.add(target);
   const n = node(target);
   if (!n) throw new Error('Unknown graph node: '+target);
 
@@ -56,7 +57,7 @@ function resolvePrerequisites(target,state,path=[],seen=new Set()) {
     if (req.type === 'approval') {
       return {path,blocked:{type:'approval',flag:req.flag,target}};
     }
-    const r = resolvePrerequisites(req.via,state,path,seen);
+    const r = resolvePrerequisites(req.via,state,path,lineage);
     if (r.blocked) return r;
     if (!r.path.includes(req.via)) r.path.push(req.via);
   }
