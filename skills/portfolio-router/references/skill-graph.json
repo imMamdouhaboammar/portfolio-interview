@@ -1,0 +1,423 @@
+{
+  "schemaVersion": "2.0.0",
+  "version": "2.0.0",
+  "architecture": "dynamic-neural-skill-graph",
+  "explanation": "Neural Connections are typed, state-aware handoffs between independent skills. Dynamic Routing selects the smallest useful skill set from intent, project state, blockers, QA feedback and explicit approvals.",
+  "stateContract": {
+    "factsApproved": "boolean",
+    "copyApproved": "boolean",
+    "layoutApproved": "boolean",
+    "buildExists": "boolean",
+    "qaPassed": "boolean",
+    "publishApproved": "boolean",
+    "contactApproved": "boolean",
+    "contactsExposed": "boolean",
+    "sourcesAvailable": "boolean",
+    "sourcesReviewed": "boolean",
+    "qaIssues": "array<{type,severity,path?}>"
+  },
+  "nodes": [
+    {
+      "id": "portfolio-router",
+      "role": "orchestrator",
+      "accepts": [
+        "task",
+        "state",
+        "forcedIntent"
+      ],
+      "produces": [
+        "routePlan"
+      ],
+      "requires": [],
+      "mutatesPortfolio": false
+    },
+    {
+      "id": "portfolio-source",
+      "role": "evidence",
+      "accepts": [
+        "cv",
+        "resume",
+        "linkedin",
+        "github",
+        "old_site",
+        "case_studies",
+        "claim_check"
+      ],
+      "produces": [
+        "sourceLedger",
+        "evidenceGaps"
+      ],
+      "requires": []
+    },
+    {
+      "id": "portfolio-interview",
+      "role": "elicitation",
+      "accepts": [
+        "missing_facts",
+        "approvals",
+        "preferences",
+        "contact_choices"
+      ],
+      "produces": [
+        "approvedFacts",
+        "approvedProfile",
+        "approvalState"
+      ],
+      "requires": []
+    },
+    {
+      "id": "portfolio-story",
+      "role": "copy",
+      "accepts": [
+        "approvedFacts",
+        "audience",
+        "locale",
+        "existingCopy"
+      ],
+      "produces": [
+        "approvedCopy"
+      ],
+      "requires": [
+        {
+          "flag": "factsApproved",
+          "via": "portfolio-interview"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-design",
+      "role": "design",
+      "accepts": [
+        "approvedCopy",
+        "audience",
+        "field",
+        "screenshots",
+        "qaLayoutIssues"
+      ],
+      "produces": [
+        "approvedLayout"
+      ],
+      "requires": [
+        {
+          "flag": "copyApproved",
+          "via": "portfolio-story"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-build",
+      "role": "build",
+      "accepts": [
+        "approvedProfile",
+        "approvedCopy",
+        "approvedLayout",
+        "assets"
+      ],
+      "produces": [
+        "generatedSite",
+        "buildEvidence"
+      ],
+      "requires": [
+        {
+          "flag": "factsApproved",
+          "via": "portfolio-interview"
+        },
+        {
+          "flag": "copyApproved",
+          "via": "portfolio-story"
+        },
+        {
+          "flag": "layoutApproved",
+          "via": "portfolio-design"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-audit",
+      "role": "qa",
+      "accepts": [
+        "generatedSite",
+        "profile",
+        "sourceLedger"
+      ],
+      "produces": [
+        "qaReport",
+        "qaIssues"
+      ],
+      "requires": [
+        {
+          "flag": "buildExists",
+          "via": "portfolio-build"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-publish",
+      "role": "release",
+      "accepts": [
+        "generatedSite",
+        "qaReport",
+        "destination"
+      ],
+      "produces": [
+        "liveUrl"
+      ],
+      "requires": [
+        {
+          "flag": "qaPassed",
+          "via": "portfolio-audit"
+        },
+        {
+          "flag": "publishApproved",
+          "type": "approval"
+        },
+        {
+          "flag": "contactApproved",
+          "type": "approval",
+          "when": "contactsExposed"
+        }
+      ]
+    }
+  ],
+  "intents": [
+    {
+      "id": "publish",
+      "weight": 100,
+      "patterns": [
+        "\\bpublish\\b",
+        "\\bdeploy\\b",
+        "go live",
+        "github pages",
+        "netlify",
+        "vercel",
+        "انشر",
+        "نشر",
+        "ارفع.*موقع"
+      ]
+    },
+    {
+      "id": "audit",
+      "weight": 90,
+      "patterns": [
+        "\\baudit\\b",
+        "review.*site",
+        "check.*site",
+        "\\bqa\\b",
+        "accessibility",
+        "rtl.*bug",
+        "افحص",
+        "راجع.*موقع",
+        "اختبر.*موقع"
+      ]
+    },
+    {
+      "id": "source",
+      "weight": 80,
+      "patterns": [
+        "extract",
+        "analy[sz]e.*cv",
+        "read.*resume",
+        "linkedin export",
+        "github profile",
+        "verify.*claim",
+        "حلل.*سير",
+        "اقرأ.*سي[رف]",
+        "تحقق.*معلومة"
+      ]
+    },
+    {
+      "id": "story",
+      "weight": 75,
+      "patterns": [
+        "rewrite",
+        "copywriting",
+        "headline",
+        "case study",
+        "about me",
+        "translate",
+        "locali[sz]e",
+        "اكتب.*نبذة",
+        "اكتب.*محتوى",
+        "ترجم",
+        "عدل.*نص"
+      ]
+    },
+    {
+      "id": "design",
+      "weight": 75,
+      "patterns": [
+        "redesign",
+        "\\bui\\b",
+        "\\bux\\b",
+        "layout",
+        "style",
+        "typography",
+        "ألوان",
+        "تصميم",
+        "رتب.*أقسام"
+      ]
+    },
+    {
+      "id": "build",
+      "weight": 70,
+      "patterns": [
+        "rebuild",
+        "generate.*site",
+        "build.*site",
+        "\\bhtml\\b",
+        "\\bcss\\b",
+        "ابني.*موقع",
+        "حدث.*موقع"
+      ]
+    },
+    {
+      "id": "interview",
+      "weight": 70,
+      "patterns": [
+        "interview",
+        "ask me",
+        "اسألني",
+        "مقابلة",
+        "اسألني.*أسئلة"
+      ]
+    },
+    {
+      "id": "create",
+      "weight": 20,
+      "patterns": [
+        "portfolio",
+        "personal website",
+        "cv site",
+        "بورتفوليو",
+        "موقع شخصي",
+        "معرض أعمال"
+      ]
+    }
+  ],
+  "intentTargets": {
+    "source": "portfolio-source",
+    "interview": "portfolio-interview",
+    "story": "portfolio-story",
+    "design": "portfolio-design",
+    "build": "portfolio-build",
+    "audit": "portfolio-audit",
+    "publish": "portfolio-publish"
+  },
+  "repairRoutes": {
+    "facts": "portfolio-source",
+    "evidence": "portfolio-source",
+    "approval": "portfolio-interview",
+    "copy": "portfolio-story",
+    "layout": "portfolio-design",
+    "accessibility": "portfolio-design",
+    "rtl": "portfolio-design",
+    "build": "portfolio-build",
+    "rendering": "portfolio-build",
+    "metadata": "portfolio-build",
+    "deploy": "portfolio-publish"
+  },
+  "edges": [
+    {
+      "from": "portfolio-source",
+      "to": "portfolio-interview",
+      "when": "evidence_gaps",
+      "handoff": [
+        "sourceLedger",
+        "evidenceGaps"
+      ]
+    },
+    {
+      "from": "portfolio-source",
+      "to": "portfolio-story",
+      "when": "facts_approved",
+      "handoff": [
+        "sourceLedger",
+        "approvedFacts"
+      ]
+    },
+    {
+      "from": "portfolio-interview",
+      "to": "portfolio-story",
+      "when": "facts_approved",
+      "handoff": [
+        "approvedProfile",
+        "approvalState"
+      ]
+    },
+    {
+      "from": "portfolio-story",
+      "to": "portfolio-design",
+      "when": "copy_approved",
+      "handoff": [
+        "approvedCopy",
+        "audience"
+      ]
+    },
+    {
+      "from": "portfolio-design",
+      "to": "portfolio-build",
+      "when": "layout_approved",
+      "handoff": [
+        "approvedLayout"
+      ]
+    },
+    {
+      "from": "portfolio-build",
+      "to": "portfolio-audit",
+      "when": "site_built",
+      "handoff": [
+        "generatedSite",
+        "buildEvidence"
+      ]
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-publish",
+      "when": "qa_passed_and_publication_approved",
+      "handoff": [
+        "qaReport",
+        "generatedSite"
+      ]
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-source",
+      "when": "unsupported_claim",
+      "handoff": [
+        "qaIssues"
+      ]
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-story",
+      "when": "copy_failure",
+      "handoff": [
+        "qaIssues"
+      ]
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-design",
+      "when": "layout_or_accessibility_failure",
+      "handoff": [
+        "qaIssues"
+      ]
+    },
+    {
+      "from": "portfolio-audit",
+      "to": "portfolio-build",
+      "when": "rendering_or_metadata_failure",
+      "handoff": [
+        "qaIssues"
+      ]
+    },
+    {
+      "from": "portfolio-publish",
+      "to": "portfolio-build",
+      "when": "site_url_changed",
+      "handoff": [
+        "liveUrl"
+      ]
+    }
+  ]
+}
