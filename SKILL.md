@@ -21,7 +21,7 @@ The person is the source of truth. Draft copy freely, but every fact, number, em
 - `agents/*.md`: three Claude Code subagents (profile-miner, portfolio-copywriter, portfolio-qa). `agents/openai.yaml` holds Codex display metadata.
 - `hooks/`: two Claude Code hooks, loaded when the skill is installed as a plugin.
 - `.claude-plugin/plugin.json`: the Claude Code plugin manifest.
-- `.codex-plugin/plugin.json` & `plugin.json`: the ChatGPT/Codex Plugin manifests with bundled runtime under `skills/portfolio-interview` and `skills/host-workspace-operator`.
+- `../../../plugins/portfolio-interview/`: the separately packaged ChatGPT/Codex Plugin at repository level (available only in a full repository checkout). Its runtime files are kept in sync with this Skill.
 - `references/interview.md`: every popup round with the exact question payloads. **Read it before asking anything.**
 - `references/profile-schema.md`: the `profile.json` contract.
 - `references/field-playbook.md`: how each field changes sections, copy, style, colour and schema.
