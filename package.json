@@ -12,6 +12,22 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs"
   },
+  "files": [
+    "SKILL.md",
+    "skills",
+    "assets",
+    "docs",
+    "agents",
+    "hooks",
+    "references",
+    "scripts",
+    "evals",
+    "install.sh",
+    "plugin.json",
+    ".codex-plugin",
+    ".claude-plugin",
+    ".skills.json"
+  ],
   "keywords": [
     "portfolio",
     "portfolio-interview",

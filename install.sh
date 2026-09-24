@@ -49,7 +49,20 @@ if [ -d "$HOME/.codex" ]; then
   INSTALL_COUNT=$((INSTALL_COUNT + 1))
 fi
 
-# 4. Agent Kernel
+# 4. OpenCode, Cursor, Windsurf & Codex global (~/.agents/skills)
+if [ -d "$HOME/.agents" ]; then
+  mkdir -p "$HOME/.agents/skills"
+  if [ -d "$HOME/.agents/skills/$SKILL_NAME" ]; then
+    echo "  ↻ Updating OpenCode / Cursor / Windsurf skill..."
+    (cd "$HOME/.agents/skills/$SKILL_NAME" && git pull --quiet origin main 2>/dev/null || true)
+  else
+    echo "  + Installing into OpenCode / Cursor / Windsurf..."
+    git clone --quiet "$REPO_URL" "$HOME/.agents/skills/$SKILL_NAME"
+  fi
+  INSTALL_COUNT=$((INSTALL_COUNT + 1))
+fi
+
+# 5. Agent Kernel
 if [ -d "$HOME/.agent-kernel" ]; then
   mkdir -p "$HOME/.agent-kernel/skills"
   if [ -d "$HOME/.agent-kernel/skills/$SKILL_NAME" ]; then
@@ -60,6 +73,14 @@ if [ -d "$HOME/.agent-kernel" ]; then
     git clone --quiet "$REPO_URL" "$HOME/.agent-kernel/skills/$SKILL_NAME"
   fi
   INSTALL_COUNT=$((INSTALL_COUNT + 1))
+fi
+
+# Fallback: If no recognized agent harness folder exists yet, install to default ~/.agents/skills
+if [ "$INSTALL_COUNT" -eq 0 ]; then
+  mkdir -p "$HOME/.agents/skills"
+  echo "  + Installing to default ~/.agents/skills..."
+  git clone --quiet "$REPO_URL" "$HOME/.agents/skills/$SKILL_NAME"
+  INSTALL_COUNT=1
 fi
 
 echo "✨ Portfolio Interview Skill installation completed across $INSTALL_COUNT environments!"
