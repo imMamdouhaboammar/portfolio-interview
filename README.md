@@ -39,11 +39,21 @@ You answer about eight rounds of multiple-choice popups. Every popup also accept
 | **Search and AI answers** | Person, ProfilePage, ItemList and FAQPage JSON-LD, plus hreflang, canonical, Open Graph, `sitemap.xml` and `llms.txt`. `robots.txt` allows GPTBot, ClaudeBot and PerplexityBot. The build also renders a 1200×630 share card. |
 | **No filler** | The build fails on invented-sounding copy (the "not just X, it's Y" formula, a list of buzzwords, em dashes), on numbers without a source, and on unnamed testimonials. |
 | **Easy to host** | Plain HTML, CSS and a small script with no dependencies. The output works on GitHub Pages, Netlify, Vercel or any static host. |
-| **Claude Code plugin** | Installs from this repo's marketplace with three subagents (profile miner, copywriter, QA) and two hooks: one lints `profile.json` on every save, the other blocks direct edits to generated pages. |
+| **Claude Code marketplace** | This repository is itself a Claude Code marketplace and an agentic plugin. It ships the state-aware router, seven graph-aligned subagents, all eight full skill packs, and deterministic hooks for profile linting and generated-output protection. |
 
 <img src="docs/og-card.png" alt="Generated 1200x630 share card" width="60%">
 
 ### Install
+
+### Why this is a marketplace, not just a plugin
+
+The repository carries both Claude manifests at its root:
+
+- `.claude-plugin/marketplace.json` makes `imMamdouhaboammar/portfolio-interview` a real marketplace source.
+- `.claude-plugin/plugin.json` defines the installable `portfolio-interview` plugin.
+- The marketplace installs the repository root with `source: "."`; the plugin then auto-discovers `skills/`, `agents/`, and `hooks/hooks.json`.
+- The agentic graph keeps approvals in the parent conversation and uses skill-preloaded subagents for source, story, design, build, audit, and publish work.
+- CI validates both the eight skill packs and the marketplace contract.
 
 <details>
 <summary><strong>ChatGPT and Codex: install the full Skills-only Plugin</strong></summary>
@@ -72,13 +82,13 @@ Pick the tool you use. Each method below was tested as written.
 Inside Claude Code:
 
 ```text
-/plugin marketplace add imMamdouhaboammar/imMamdouhaboammar
-/plugin install portfolio-interview@mamdouh-skills
+/plugin marketplace add imMamdouhaboammar/portfolio-interview
+/plugin install portfolio-interview@mamdouh-portfolio
 ```
 
-Then start it with `/portfolio-interview:portfolio-interview`, or just say "build me a portfolio". To update later, run `/plugin marketplace update mamdouh-skills`.
+Then start the graph with `/portfolio-interview:portfolio-router`, call `@agent-portfolio-interview:portfolio-orchestrator`, or simply say "build me a portfolio". To refresh the catalog later, run `/plugin marketplace update mamdouh-portfolio`.
 
-This route installs everything: the skill, [three subagents](#subagents) and [two hooks](#hooks). Every other route installs the skill alone, and you can add the extras by hand.
+This route installs the full agentic runtime: eight full skill packs, the graph orchestrator, six isolated execution workers, the compatibility subagents, and [two hooks](#hooks). The orchestrator returns interview/approval gates to the parent session instead of guessing them.
 
 To try a local checkout without installing it: `claude --plugin-dir ./.claude/skills/portfolio-interview`.
 
@@ -89,10 +99,10 @@ To try a local checkout without installing it: `claude --plugin-dir ./.claude/sk
 
 ```bash
 # into the current project
-npx skills add imMamdouhaboammar/imMamdouhaboammar --skill portfolio-interview
+npx skills add imMamdouhaboammar/portfolio-interview --skill portfolio-interview
 
 # for every project on this machine, Claude Code and Codex only, without prompts
-npx skills add imMamdouhaboammar/imMamdouhaboammar --skill portfolio-interview -g -a claude-code -a codex -y
+npx skills add imMamdouhaboammar/portfolio-interview --skill portfolio-interview -g -a claude-code -a codex -y
 ```
 
 - **Claude Code:** start it with `/portfolio-interview`.
@@ -104,9 +114,9 @@ npx skills add imMamdouhaboammar/imMamdouhaboammar --skill portfolio-interview -
 <summary><strong>Claude Code: copy the folder</strong></summary>
 
 ```bash
-git clone --depth 1 https://github.com/imMamdouhaboammar/imMamdouhaboammar.git /tmp/mamdouh
+git clone --depth 1 https://github.com/imMamdouhaboammar/portfolio-interview.git /tmp/mamdouh
 mkdir -p ~/.claude/skills
-cp -R /tmp/mamdouh/.claude/skills/portfolio-interview ~/.claude/skills/
+cp -R /tmp/mamdouh ~/.claude/skills/
 ```
 
 To install it for one project only, use `.claude/skills/` inside that project. Start it with `/portfolio-interview`.
@@ -117,9 +127,9 @@ To install it for one project only, use `.claude/skills/` inside that project. S
 <summary><strong>Codex: copy the folder</strong></summary>
 
 ```bash
-git clone --depth 1 https://github.com/imMamdouhaboammar/imMamdouhaboammar.git /tmp/mamdouh
+git clone --depth 1 https://github.com/imMamdouhaboammar/portfolio-interview.git /tmp/mamdouh
 mkdir -p ~/.agents/skills
-cp -R /tmp/mamdouh/.claude/skills/portfolio-interview ~/.agents/skills/
+cp -R /tmp/mamdouh ~/.agents/skills/
 ```
 
 For one project only, copy it to `.agents/skills/` in the repository. Restart Codex if the skill doesn't appear.
@@ -131,8 +141,8 @@ For one project only, copy it to `.agents/skills/` in the repository. Restart Co
 
 1. Build the ZIP:
    ```bash
-   git clone --depth 1 https://github.com/imMamdouhaboammar/imMamdouhaboammar.git /tmp/mamdouh
-   node /tmp/mamdouh/.claude/skills/portfolio-interview/scripts/package.mjs ~/portfolio-interview.zip
+   git clone --depth 1 https://github.com/imMamdouhaboammar/portfolio-interview.git /tmp/mamdouh
+   node /tmp/mamdouh/scripts/package.mjs ~/portfolio-interview.zip
    ```
    The same ZIP is attached to every run of the **Portfolio interview skill checks** workflow, under Actions → Artifacts (you need to be signed in to GitHub).
 2. Turn on code execution: **Settings → Capabilities** (Team and Enterprise admins: **Organization settings → Plugins & skills**).
@@ -143,15 +153,21 @@ On claude.ai the rounds appear as popups when the question widget is available. 
 
 </details>
 
-### Subagents
+### Agentic runtime and subagents
 
-The plugin brings three specialists. The skill hands work to them on its own, and you can also call them directly with `@agent-portfolio-interview:<name>`.
+The marketplace plugin ships a graph orchestrator plus one isolated worker for each execution-heavy specialist node. Each worker preloads the matching full skill with Claude Code's `skills:` agent frontmatter. The interactive interview/approval node deliberately remains in the parent conversation so consent and publication decisions are never delegated away.
 
-| Subagent | What it does | Model |
+| Subagent | Preloaded skill | Responsibility |
 |---|---|---|
-| `profile-miner` | Reads your CV, LinkedIn export, GitHub account or old site, and returns prefilled answers with the source of each one. It never fills a gap by guessing. | sonnet |
-| `portfolio-copywriter` | Writes every string in `profile.json` in your language and dialect, drafts three headlines, counts meta description characters, and keeps rerunning the checks until they pass. | same as your session |
-| `portfolio-qa` | Builds the site, reads the screenshots like a recruiter would, and returns fixes in priority order, each tied to a `profile.json` field. It never edits files. | sonnet |
+| `portfolio-orchestrator` | `portfolio-router` | Resolves intent/state, chooses the smallest valid chain, validates handoffs, and stops on user gates. |
+| `portfolio-source-worker` | `portfolio-source` | Builds a provenance/permission-aware evidence ledger. |
+| `portfolio-story-worker` | `portfolio-story` | Produces evidence-linked copy and localization patches. |
+| `portfolio-design-worker` | `portfolio-design` | Handles information architecture, responsive UX, accessibility and RTL. |
+| `portfolio-build-worker` | `portfolio-build` | Runs the canonical generator/checker and records build evidence. |
+| `portfolio-audit-worker` | `portfolio-audit` | Independently verifies provenance, privacy, accessibility, responsive/RTL behavior and metadata. |
+| `portfolio-publish-worker` | `portfolio-publish` | Performs only approval-gated releases and records non-secret deployment evidence. |
+
+The original `profile-miner`, `portfolio-copywriter`, and `portfolio-qa` agents stay available for backward compatibility with the root all-in-one workflow.
 
 ### Hooks
 
@@ -305,13 +321,13 @@ The design comes from the [portfolio page](https://immamdouhaboammar.github.io/i
 </div>
 
 ```text
-/plugin marketplace add imMamdouhaboammar/imMamdouhaboammar
-/plugin install portfolio-interview@mamdouh-skills
+/plugin marketplace add imMamdouhaboammar/portfolio-interview
+/plugin install portfolio-interview@mamdouh-portfolio
 ```
 
 <div dir="rtl">
 
-بعدها شغّله بـ `/portfolio-interview:portfolio-interview`، أو قول لـ Claude "اعملي بورتفوليو" وهو هيشغله لوحده.
+بعدها شغّل الـ graph بـ `/portfolio-interview:portfolio-router`، أو نادِ `@agent-portfolio-interview:portfolio-orchestrator`، أو قول لـ Claude "اعملي بورتفوليو" وهو هيختار المسار المناسب.
 
 الـ Plugin بينزّل معاه كل حاجة. ده جدول باللي بيجي معاه:
 
@@ -323,14 +339,14 @@ The design comes from the [portfolio page](https://immamdouhaboammar.github.io/i
 | Hook قبل التعديل | بيمنع التعديل المباشر في ملفات الموقع اللي اتولدت، وبيوجّهك لـ `profile.json` |
 | Hook بعد الحفظ | بيراجع `profile.json` كل مرة يتحفظ، ويرجّع الأخطاء لـ Claude على طول |
 
-تقدر تنادي أي Agent بنفسك كده: `@agent-portfolio-interview:portfolio-qa`.
+تقدر تبدأ الـagentic workflow مباشرة بـ `@agent-portfolio-interview:portfolio-orchestrator`، أو تنادي worker محدد مثل `@agent-portfolio-interview:portfolio-audit-worker`.
 
 **في Claude Code أو Codex بأداة `npx skills`:**
 
 </div>
 
 ```bash
-npx skills add imMamdouhaboammar/imMamdouhaboammar --skill portfolio-interview
+npx skills add imMamdouhaboammar/portfolio-interview --skill portfolio-interview
 ```
 
 <div dir="rtl">
