@@ -8,10 +8,11 @@
     "url": "git+https://github.com/imMamdouhaboammar/portfolio-interview.git"
   },
   "scripts": {
-    "test": "bun scripts/selftest.mjs",
+    "test": "bun scripts/selftest.mjs && node scripts/skills-selftest.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "test:router": "node scripts/router-selftest.mjs"
+    "test:router": "node scripts/router-selftest.mjs",
+    "test:skills": "node scripts/skills-selftest.mjs"
   },
   "keywords": [
     "portfolio",

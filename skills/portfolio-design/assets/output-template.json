@@ -1,0 +1,34 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-design",
+  "sectionOrder": [],
+  "tokens": {
+    "typography": {},
+    "spacing": {},
+    "color": {},
+    "motion": {}
+  },
+  "responsive": {
+    "320": {},
+    "390": {},
+    "768": {},
+    "1440": {}
+  },
+  "rtl": {
+    "enabled": false,
+    "decisions": []
+  },
+  "accessibility": {
+    "focus": [],
+    "contrast": [],
+    "keyboard": [],
+    "reducedMotion": [],
+    "altText": []
+  },
+  "mediaRequirements": [],
+  "profileChanges": [],
+  "templateChanges": [],
+  "statePatch": {
+    "layoutApproved": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-router",
+  "intent": "",
+  "intents": [],
+  "status": "ready",
+  "selected": null,
+  "desired": null,
+  "plan": [],
+  "blockers": [],
+  "signals": [],
+  "handoff": {
+    "from": "portfolio-router",
+    "to": "",
+    "reason": "",
+    "artifacts": [],
+    "statePatch": {},
+    "blockers": [],
+    "requestedOutcome": ""
+  },
+  "mergePolicy": {
+    "allowedStateKeys": []
+  }
+}

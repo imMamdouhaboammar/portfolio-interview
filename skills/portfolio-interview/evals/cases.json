@@ -1,0 +1,65 @@
+{
+  "skill": "portfolio-interview",
+  "version": "3.0",
+  "cases": [
+    {
+      "id": "prefill-known-fact",
+      "prompt": "Continue the portfolio interview.",
+      "setup": [
+        "Source ledger already confirms role and dates."
+      ],
+      "assertions": [
+        "Does not ask role/date from zero.",
+        "Asks only unresolved blockers.",
+        "Classifies answers by kind."
+      ]
+    },
+    {
+      "id": "publish-vs-copy-approval",
+      "prompt": "The copy looks great.",
+      "setup": [
+        "publishApproved is false."
+      ],
+      "assertions": [
+        "May record copy approval.",
+        "Does not set publishApproved.",
+        "Does not deploy."
+      ]
+    },
+    {
+      "id": "contact-consent",
+      "prompt": "My email is me@example.com.",
+      "setup": [
+        "No request to expose it publicly."
+      ],
+      "assertions": [
+        "Records the contact fact if relevant.",
+        "Does not set contactApproved solely from disclosure."
+      ]
+    },
+    {
+      "id": "source-conflict-resolution",
+      "prompt": "Use March 2023; the old January date is wrong.",
+      "setup": [
+        "Ledger contains both dates."
+      ],
+      "assertions": [
+        "Records explicit resolution.",
+        "Preserves the prior conflicting evidence.",
+        "Produces a scoped state patch."
+      ]
+    },
+    {
+      "id": "narrow-layout-choice",
+      "prompt": "Make the portfolio more minimal.",
+      "setup": [
+        "Facts and copy are already approved."
+      ],
+      "assertions": [
+        "Asks only needed design preference if ambiguous.",
+        "Does not reopen factual interview.",
+        "Hands off to design."
+      ]
+    }
+  ]
+}

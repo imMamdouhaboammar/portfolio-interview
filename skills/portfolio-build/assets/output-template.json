@@ -1,0 +1,15 @@
+{
+  "schema_version": "3.0",
+  "skill": "portfolio-build",
+  "mode": "prepared",
+  "profilePath": "",
+  "outputDir": "",
+  "commands": [],
+  "artifacts": [],
+  "checks": [],
+  "skipped": [],
+  "statePatch": {
+    "buildExists": false
+  },
+  "blockers": []
+}
